@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>"What's Next" — Partnership Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07070d;--surface:#0f0f1a;--card:#14142a;
+  --border:rgba(255,255,255,.06);--text:#f0f0f5;--muted:rgba(240,240,245,.55);
+  --accent:#7c5cfc;--accent-glow:rgba(124,92,252,.25);
+  --blue:#4f8fff;--purple:#a855f7;--green:#22c55e;
+  --gradient-1:linear-gradient(135deg,#7c5cfc 0%,#4f8fff 100%);
+  --gradient-2:linear-gradient(135deg,#0f0f1a 0%,#1a1a35 100%);
+  --glass:rgba(255,255,255,.04);--glass-border:rgba(255,255,255,.08);
+}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+body{font-family:'Inter','Noto Sans SC',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+.slide{min-height:100vh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;position:relative;padding:60px 80px;overflow:hidden}
+@media(max-width:768px){.slide{padding:40px 24px}}
+.slide-inner{max-width:1100px;width:100%;position:relative;z-index:2}
+
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:var(--glass);border:1px solid var(--glass-border);color:var(--accent);backdrop-filter:blur(12px);margin-bottom:24px}
+.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent-glow)}
+.badge-green{color:var(--green)}.badge-green::before{background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.4)}
+
+h1{font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.05;letter-spacing:-2px;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+h2{font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px}
+h3{font-size:22px;font-weight:600;line-height:1.3;margin-bottom:12px}
+.subtitle{font-size:clamp(16px,2vw,20px);color:var(--muted);line-height:1.7;max-width:640px;font-weight:400}
+
+.orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;opacity:.3}
+.orb-1{width:600px;height:600px;background:radial-gradient(circle,#7c5cfc,transparent 70%);top:-200px;right:-200px}
+.orb-2{width:500px;height:500px;background:radial-gradient(circle,#4f8fff,transparent 70%);bottom:-200px;left:-150px}
+.orb-3{width:400px;height:400px;background:radial-gradient(circle,#a855f7,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+
+.divider{width:60px;height:2px;background:var(--gradient-1);margin:32px 0;border-radius:2px}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+@media(max-width:900px){.card-grid{grid-template-columns:1fr}}
+
+.card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:32px 28px;backdrop-filter:blur(20px);transition:transform .3s ease,box-shadow .3s ease;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(124,92,252,.1)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient-1);opacity:0;transition:opacity .3s ease}
+.card:hover::before{opacity:1}
+.card-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.card-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.card h3{margin-bottom:10px}
+.card p{font-size:14px;color:var(--muted);line-height:1.7}
+.card-tag{display:inline-block;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:600;background:var(--accent-glow);color:var(--accent);margin-top:16px}
+
+.quote-block{position:relative;padding:32px 36px;border-radius:20px;background:var(--glass);border:1px solid var(--glass-border);margin-top:32px}
+.quote-block::before{content:'\201C';position:absolute;top:8px;left:20px;font-size:64px;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;opacity:.3}
+.quote-block p{font-size:18px;font-weight:500;line-height:1.7;padding-left:20px}
+
+.roadmap{display:flex;flex-direction:column;gap:0;margin-top:40px;position:relative}
+.roadmap::before{content:'';position:absolute;left:23px;top:24px;bottom:24px;width:2px;background:linear-gradient(180deg,var(--accent),rgba(79,143,255,.15));border-radius:2px}
+.roadmap-item{display:flex;align-items:flex-start;gap:24px;padding:18px 0;position:relative}
+.roadmap-dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent-glow);flex-shrink:0;margin-top:6px;position:relative;z-index:2}
+.roadmap-dot.active{width:16px;height:16px;margin-top:4px;margin-left:-2px;border:3px solid var(--accent);background:var(--bg)}
+.roadmap-dot.future{background:rgba(255,255,255,.12);box-shadow:none}
+.roadmap-content{flex:1}
+.roadmap-ep{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.roadmap-ep.future{color:var(--muted)}
+.roadmap-title{font-size:18px;font-weight:600;margin-bottom:4px}
+.roadmap-desc{font-size:14px;color:var(--muted)}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+
+.collab-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:28px;backdrop-filter:blur(12px);height:100%;display:flex;flex-direction:column}
+.collab-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.collab-avatar{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700}
+.collab-name{font-size:16px;font-weight:600}
+.collab-role{font-size:12px;color:var(--muted)}
+.collab-list{list-style:none;display:flex;flex-direction:column;gap:10px;flex:1}
+.collab-list li{font-size:14px;color:var(--muted);padding-left:22px;position:relative;line-height:1.6}
+.collab-list li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%}
+
+.timeline-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+@media(max-width:768px){.timeline-row{grid-template-columns:repeat(2,1fr)}}
+.tl-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:24px;text-align:center;backdrop-filter:blur(12px);transition:box-shadow .3s ease}
+.tl-card.highlight{border-color:rgba(124,92,252,.3);box-shadow:0 0 40px var(--accent-glow)}
+.tl-date{font-size:28px;font-weight:700;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.tl-label{font-size:12px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+
+.stat-row{display:flex;gap:48px;margin-top:32px;flex-wrap:wrap}
+.stat-value{font-size:48px;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-label{font-size:13px;color:var(--muted);margin-top:6px;font-weight:500}
+
+.vision-box{position:relative;padding:48px 44px;border-radius:24px;background:var(--gradient-2);border:1px solid var(--glass-border);overflow:hidden;margin-top:40px}
+.vision-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(124,92,252,.1),transparent 70%);pointer-events:none}
+.vision-box h2{font-size:clamp(24px,3vw,36px)}
+
+.growth-path{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px}
+.growth-node{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:20px 28px;text-align:center;flex-shrink:0}
+.growth-node .num{font-size:32px;font-weight:700}
+.growth-node .label{font-size:12px;color:var(--muted);margin-top:2px}
+.growth-arrow{font-size:20px;color:rgba(255,255,255,.15)}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+@media(max-width:900px){.pillars{grid-template-columns:1fr}}
+.pillar{text-align:center;padding:24px 20px}
+.pillar-num{font-size:56px;font-weight:800;line-height:1;opacity:.08}
+.pillar-title{font-size:16px;font-weight:600;margin-bottom:6px;margin-top:-12px}
+.pillar-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+.nav-dots{position:fixed;right:32px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:100}
+@media(max-width:768px){.nav-dots{right:16px;gap:10px}}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:all .3s ease;border:none;padding:0}
+.nav-dot.active{background:var(--accent);box-shadow:0 0 10px var(--accent-glow);transform:scale(1.3)}
+
+.page-num{position:absolute;bottom:32px;right:40px;font-size:12px;font-weight:500;color:rgba(255,255,255,.2);letter-spacing:1px;z-index:3}
+@media(max-width:768px){.page-num{bottom:20px;right:24px}}
+
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+.speakers{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.speaker{padding:5px 14px;border-radius:100px;font-size:12px;font-weight:500;background:var(--glass);border:1px solid var(--glass-border);color:var(--muted)}
+
+.lang-toggle{position:fixed;top:28px;right:32px;z-index:200;display:flex;align-items:center;background:var(--glass);border:1px solid var(--glass-border);border-radius:100px;backdrop-filter:blur(20px);padding:4px;gap:0;cursor:pointer}
+@media(max-width:768px){.lang-toggle{top:16px;right:16px}}
+.lang-btn{padding:7px 16px;border-radius:100px;font-size:12px;font-weight:600;color:var(--muted);border:none;background:transparent;cursor:pointer;transition:all .25s ease;letter-spacing:.5px}
+.lang-btn.active{background:var(--accent);color:#fff;box-shadow:0 2px 12px var(--accent-glow)}
+
+[data-i18n]{transition:opacity .25s ease}
+.i18n-fading [data-i18n]{opacity:0}
+
+.partner-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:32px}
+@media(max-width:900px){.partner-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.partner-grid{grid-template-columns:repeat(2,1fr)}}
+.partner-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:20px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(12px);transition:transform .3s ease,box-shadow .3s ease}
+.partner-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(124,92,252,.08)}
+.partner-card img{max-width:72px;max-height:44px;object-fit:contain;margin-bottom:10px}
+.partner-name{font-size:13px;font-weight:600;color:var(--text)}
+.partner-role{font-size:10px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+</style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle" id="langToggle">
+  <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+</div>
+
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ============ SLIDE 1 — COVER ============ -->
+<section class="slide" id="s0">
+  <div class="page-num">01 / 11</div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge badge-green" data-i18n="badge_cover" data-en="Partnership Confirmed &middot; March 2026" data-zh="合作已确认 &middot; 2026年3月">Partnership Confirmed &middot; March 2026</div>
+    </div>
+    <h1 class="fade-in d1">"What's Next"</h1>
+    <p class="subtitle fade-in d2" data-i18n="sub_cover" data-en="A recurring monthly event series for solopreneurs, builders, and the next generation of one-person companies — built together." data-zh="一个为独立创业者、构建者和新一代一人公司打造的每月系列活动 — 共同构建。">A recurring monthly event series for solopreneurs, builders, and the next generation of one-person companies — built together.</p>
+    <div class="stat-row fade-in d3">
+      <div>
+        <span class="stat-value">Ep.1</span>
+        <span class="stat-label" data-i18n="stat_date" data-en="Friday, March 27" data-zh="3月27日 星期五">Friday, March 27</span>
+      </div>
+      <div>
+        <span class="stat-value">50</span>
+        <span class="stat-label" data-i18n="stat_pax" data-en="Curated attendees" data-zh="精选参会者">Curated attendees</span>
+      </div>
+      <div>
+        <span class="stat-value">5+</span>
+        <span class="stat-label" data-i18n="stat_eps" data-en="Episodes planned" data-zh="已规划期数">Episodes planned</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 2 — THE OPPORTUNITY ============ -->
+<section class="slide" id="s1">
+  <div class="page-num">02 / 11</div>
+  <div class="orb orb-3"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge" data-i18n="badge_opp" data-en="The Opportunity" data-zh="机遇">The Opportunity</div>
+    </div>
+    <h2 class="fade-in d1" data-i18n="h_opp" data-en="One-person companies<br>are the fastest-growing<br>segment in tech." data-zh="一人公司<br>正成为科技领域<br>增长最快的细分市场。">One-person companies<br>are the fastest-growing<br>segment in tech.</h2>
+    <div class="divider fade-in d2"></div>
+    <p class="subtitle fade-in d2" data-i18n="sub_opp" data-en="AI has made it possible for a single person to build, ship, and scale a product. But building alone doesn't mean building in isolation. What's missing isn't tools — it's community, guidance, and a structured path forward." data-zh="AI让一个人构建、发布和扩展产品成为可能。但独自构建并不意味着孤立构建。缺少的不是工具 — 而是社区、指导和一条清晰的前进路径。">AI has made it possible for a single person to build, ship, and scale a product. But building alone doesn't mean building in isolation. What's missing isn't tools — it's community, guidance, and a structured path forward.</p>
+    <div class="pillars fade-in d3">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title" data-i18n="p1_t" data-en="Builders need direction" data-zh="构建者需要方向">Builders need direction</div>
+        <div class="pillar-desc" data-i18n="p1_d" data-en="After shipping their first app, most solopreneurs don't know what comes next — marketing, monetisation, scaling." data-zh="发布第一款应用后，大多数独立创业者不知道下一步该做什么 — 营销、变现、还是扩展。">After shipping their first app, most solopreneurs don't know what comes next — marketing, monetisation, scaling.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title" data-i18n="p2_t" data-en="Knowledge is fragmented" data-zh="知识是碎片化的">Knowledge is fragmented</div>
+        <div class="pillar-desc" data-i18n="p2_d" data-en="Expert insights are scattered across podcasts, threads, and paywalls. Builders need it in one room, from real practitioners." data-zh="专家见解分散在播客、帖子和付费墙背后。构建者需要在同一个空间里，从真正的实践者那里获取知识。">Expert insights are scattered across podcasts, threads, and paywalls. Builders need it in one room, from real practitioners.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title" data-i18n="p3_t" data-en="Community is the moat" data-zh="社区是护城河">Community is the moat</div>
+        <div class="pillar-desc" data-i18n="p3_d" data-en="The most valuable networks aren't built on LinkedIn. They're built in rooms where people share real work and real feedback." data-zh="最有价值的人脉网络不是在LinkedIn上建立的，而是在人们分享真实作品和真实反馈的空间里建立的。">The most valuable networks aren't built on LinkedIn. They're built in rooms where people share real work and real feedback.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 3 — THE CONCEPT ============ -->
+<section class="slide" id="s2">
+  <div class="page-num">03 / 11</div>
+  <div class="orb orb-1" style="top:auto;bottom:-200px;right:auto;left:-100px"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge" data-i18n="badge_concept" data-en="The Concept" data-zh="概念">The Concept</div>
+    </div>
+    <h2 class="fade-in d1" data-i18n="h_concept" data-en="A monthly series that<br>mirrors the founder journey." data-zh="一个映射创始人旅程的<br>每月系列活动。">A monthly series that<br>mirrors the founder journey.</h2>
+    <div class="divider fade-in d2"></div>
+    <p class="subtitle fade-in d2" data-i18n="sub_concept" data-en='Each episode of <strong style="color:var(--text)">"What&apos;s Next"</strong> is designed around a different phase of building a one-person company — from first build to scaling revenue to reimagining what work means in an AI-native world.' data-zh='每一期 <strong style="color:var(--text)">"What&apos;s Next"</strong> 都围绕一人公司的不同阶段设计 — 从首次构建到收入扩展，再到重新定义AI原生世界中工作的意义。'>Each episode of <strong style="color:var(--text)">"What's Next"</strong> is designed around a different phase of building a one-person company — from first build to scaling revenue to reimagining what work means in an AI-native world.</p>
+    <div class="quote-block fade-in d3">
+      <p data-i18n="quote" data-en='"Not a meetup. Not a conference. A curated space where builders learn, demo, and get direct feedback — every month, at every stage."' data-zh='"不是聚会，不是大会。而是一个精心策划的空间，让构建者学习、展示并获得直接反馈 — 每月一次，覆盖每个阶段。"'>"Not a meetup. Not a conference. A curated space where builders learn, demo, and get direct feedback — every month, at every stage."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 4 — EPISODE 1 ============ -->
+<section class="slide" id="s3">
+  <div class="page-num">04 / 11</div>
+  <div class="orb orb-2" style="bottom:auto;top:-100px;left:auto;right:-100px"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge badge-green" data-i18n="badge_ep1" data-en="Debut Episode &middot; March 27" data-zh="首期活动 &middot; 3月27日">Debut Episode &middot; March 27</div>
+    </div>
+    <h2 class="fade-in d1" data-i18n="h_ep1" data-en="You Vibe-Coded an App.<br>What's Next?" data-zh="你用Vibe Coding做了一个App。<br>What's Next?">You Vibe-Coded an App.<br>What's Next?</h2>
+    <div class="divider fade-in d2"></div>
+    <p class="subtitle fade-in d2" data-i18n="sub_ep1" data-en="The first edition is targeted at young solopreneurs and aspiring founders in the early stages of building. Three curated spaces, each designed to serve builders at a different need." data-zh="首期活动面向处于构建早期阶段的年轻独立创业者和有志创始人。三个精心策划的空间，各自服务于不同需求的构建者。">The first edition is targeted at young solopreneurs and aspiring founders in the early stages of building. Three curated spaces, each designed to serve builders at a different need.</p>
+    <div class="fade-in d3" style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+      <span class="card-tag" style="font-size:13px;padding:8px 18px" data-i18n="tag_loc" data-en="Our Office" data-zh="我们的办公室">Our Office</span>
+      <span class="card-tag" style="font-size:13px;padding:8px 18px" data-i18n="tag_pax" data-en="50 Pax &middot; Curated" data-zh="50人 &middot; 精选邀请">50 Pax &middot; Curated</span>
+      <span class="card-tag" style="font-size:13px;padding:8px 18px">5:30 PM — 8:30 PM</span>
+      <span class="card-tag" style="font-size:13px;padding:8px 18px;background:rgba(34,197,94,.12);color:var(--green)" data-i18n="tag_confirmed" data-en="Confirmed" data-zh="已确认">Confirmed</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5 — THREE SPACES ============ -->
+<section class="slide" id="s4">
+  <div class="page-num">05 / 11</div>
+  <div class="orb orb-3" style="top:20%;left:60%"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge" data-i18n="badge_arch" data-en="Event Architecture" data-zh="活动架构">Event Architecture</div>
+    </div>
+    <h2 class="fade-in d1" data-i18n="h_spaces" data-en="Three spaces.<br>Three ways to engage." data-zh="三个空间。<br>三种参与方式。">Three spaces.<br>Three ways to engage.</h2>
+    <div class="card-grid">
+      <div class="card fade-in d1">
+        <div class="card-icon" style="background:rgba(124,92,252,.12)">🎓</div>
+        <div class="card-label" data-i18n="sp1_label" data-en="Space 1 — Learn" data-zh="空间一 — 学习">Space 1 — Learn</div>
+        <h3 data-i18n="sp1_h" data-en="Open Floor Knowledge" data-zh="开放式知识分享">Open Floor Knowledge</h3>
+        <p data-i18n="sp1_p" data-en="Industry experts share insights in an open format — 10 minutes each. Short, actionable, no fluff." data-zh="行业专家以开放形式分享见解 — 每人10分钟。简短、实用、没有空话。">Industry experts share insights in an open format — 10 minutes each. Short, actionable, no fluff.</p>
+        <div class="speakers">
+          <span class="speaker" data-i18n="spk_prof" data-en="Professors" data-zh="教授">Professors</span>
+          <span class="speaker" data-i18n="spk_ai" data-en="AI Marketing Leaders" data-zh="AI营销领袖">AI Marketing Leaders</span>
+          <span class="speaker">Hashmenta</span>
+          <span class="speaker">AI Apex Asia</span>
+        </div>
+        <div class="card-tag" data-i18n="tag_learn" data-en="For anyone who wants to learn" data-zh="适合所有想学习的人">For anyone who wants to learn</div>
+      </div>
+      <div class="card fade-in d2">
+        <div class="card-icon" style="background:rgba(79,143,255,.12)">🚀</div>
+        <div class="card-label" data-i18n="sp2_label" data-en="Space 2 — Demo" data-zh="空间二 — 演示">Space 2 — Demo</div>
+        <h3 data-i18n="sp2_h" data-en="Builders Showcase" data-zh="构建者展示">Builders Showcase</h3>
+        <p data-i18n="sp2_p" data-en="Live walkthroughs of real products and the full build-to-launch workflow — from code to deploy to GTM. Featuring Soulgarden, Riteset, and pre-vetted builder submissions." data-zh="真实产品的现场演示和完整的从构建到发布的工作流程 — 从代码到部署到GTM策略。展示Soulgarden、Riteset以及经过预审的构建者提交项目。">Live walkthroughs of real products and the full build-to-launch workflow — from code to deploy to GTM. Featuring Soulgarden, Riteset, and pre-vetted builder submissions.</p>
+        <div class="speakers">
+          <span class="speaker">SoulGarden</span>
+          <span class="speaker">Riteset</span>
+          <span class="speaker" data-i18n="spk_demo" data-en="3x Selected Demos" data-zh="3组精选演示">3x Selected Demos</span>
+        </div>
+        <div class="card-tag" data-i18n="tag_show" data-en="For anyone who wants to show" data-zh="适合所有想展示的人">For anyone who wants to show</div>
+      </div>
+      <div class="card fade-in d3">
+        <div class="card-icon" style="background:rgba(168,85,247,.12)">💬</div>
+        <div class="card-label" data-i18n="sp3_label" data-en="Space 3 — Show &amp; Ask" data-zh="空间三 — 展示与提问">Space 3 — Show &amp; Ask</div>
+        <h3 data-i18n="sp3_h" data-en="The New York Room" data-zh="纽约厅">The New York Room</h3>
+        <p data-i18n="sp3_p" data-en="An intimate feedback session. Builders in the active building phase present their app or idea and receive direct, expert feedback in real time." data-zh="一场私密的反馈会议。正在积极构建阶段的创业者展示他们的应用或想法，并实时获得来自专家的直接反馈。">An intimate feedback session. Builders in the active building phase present their app or idea and receive direct, expert feedback in real time.</p>
+        <div class="speakers">
+          <span class="speaker" data-i18n="spk_lf" data-en="LF — Strategy" data-zh="LF — 战略">LF — Strategy</span>
+          <span class="speaker" data-i18n="spk_marc" data-en="Wendy — Marketing" data-zh="Wendy — 营销">Wendy — Marketing</span>
+          <span class="speaker" data-i18n="spk_dan" data-en="Dannick — Design" data-zh="Dannick — 设计">Dannick — Design</span>
+        </div>
+        <div class="card-tag" data-i18n="tag_fb" data-en="For anyone who wants feedback" data-zh="适合所有想获得反馈的人">For anyone who wants feedback</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 6 — SCALE & FORMAT ============ -->
+<section class="slide" id="s5">
+  <div class="page-num">06 / 11</div>
+  <div class="orb orb-1" style="top:30%;right:-100px;width:400px;height:400px"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge" data-i18n="badge_format" data-en="Format &amp; Scale" data-zh="形式与规模">Format &amp; Scale</div>
+    </div>
+    <h2 class="fade-in d1" data-i18n="h_scale" data-en="Start intimate.<br>Scale deliberately." data-zh="从小而精开始。<br>有节奏地扩展。">Start intimate.<br>Scale deliberately.</h2>
+    <div class="divider fade-in d2"></div>
+    <p class="subtitle fade-in d2" data-i18n="sub_scale" data-en="We're aligned that quality of audience matters more than size — especially in the early editions. The first event is intentionally small and curated to set the standard for everything that follows." data-zh="我们一致认为，观众的质量比规模更重要 — 尤其是在早期阶段。首场活动刻意保持小而精，为后续的一切树立标准。">We're aligned that quality of audience matters more than size — especially in the early editions. The first event is intentionally small and curated to set the standard for everything that follows.</p>
+    <div class="growth-path fade-in d3">
+      <div class="growth-node">
+        <div class="num" style="background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">50</div>
+        <div class="label" data-i18n="g1" data-en="Edition 1 — Curated" data-zh="第一期 — 精选">Edition 1 — Curated</div>
+      </div>
+      <div class="growth-arrow">→</div>
+      <div class="growth-node">
+        <div class="num">100</div>
+        <div class="label" data-i18n="g2" data-en="Edition 2 — Expanded" data-zh="第二期 — 扩展">Edition 2 — Expanded</div>
+      </div>
+      <div class="growth-arrow">→</div>
+      <div class="growth-node">
+        <div class="num">200+</div>
+        <div class="label" data-i18n="g3" data-en="Edition 3+ — Community" data-zh="第三期+ — 社区">Edition 3+ — Community</div>
+      </div>
+      <div class="growth-arrow">→</div>
+      <div class="growth-node" style="border-color:rgba(124,92,252,.3);box-shadow:0 0 30px var(--accent-glow)">
+        <div class="num" style="background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">∞</div>
+        <div class="label" style="color:var(--accent)">The Collective</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 7 — ROADMAP ============ -->
+<section class="slide" id="s6">
+  <div class="page-num">07 / 11</div>
+  <div class="orb orb-2" style="bottom:auto;top:30%;left:30%"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge" data-i18n="badge_road" data-en="Series Roadmap" data-zh="系列路线图">Series Roadmap</div>
+    </div>
+    <h2 class="fade-in d1" data-i18n="h_road" data-en="Five episodes.<br>The full builder lifecycle." data-zh="五期节目。<br>完整的构建者生命周期。">Five episodes.<br>The full builder lifecycle.</h2>
+    <div class="roadmap fade-in d2">
+      <div class="roadmap-item">
+        <div class="roadmap-dot active"></div>
+        <div class="roadmap-content">
+          <div class="roadmap-ep" data-i18n="ep1_label" data-en="Episode 1 &middot; March 27" data-zh="第一期 &middot; 3月27日">Episode 1 &middot; March 27</div>
+          <div class="roadmap-title" data-i18n="ep1_t" data-en="You Vibe-Coded an App. What's Next?" data-zh="你用Vibe Coding做了一个App。What's Next?">You Vibe-Coded an App. What's Next?</div>
+          <div class="roadmap-desc" data-i18n="ep1_d" data-en="Early-stage builders navigating their first build, deploy, and GTM." data-zh="早期阶段的构建者，正在经历首次构建、部署和GTM。">Early-stage builders navigating their first build, deploy, and GTM.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-content">
+          <div class="roadmap-ep" data-i18n="ep2_label" data-en="Episode 2" data-zh="第二期">Episode 2</div>
+          <div class="roadmap-title" data-i18n="ep2_t" data-en="You Launched. Pre-Revenue. What's Next?" data-zh="你已发布，尚无收入。What's Next?">You Launched. Pre-Revenue. What's Next?</div>
+          <div class="roadmap-desc" data-i18n="ep2_d" data-en="Marketing strategy, go-to-market execution, finding your first users." data-zh="营销策略、GTM执行、获取你的第一批用户。">Marketing strategy, go-to-market execution, finding your first users.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot future"></div>
+        <div class="roadmap-content">
+          <div class="roadmap-ep future" data-i18n="ep3_label" data-en="Episode 3" data-zh="第三期">Episode 3</div>
+          <div class="roadmap-title" data-i18n="ep3_t" data-en="You Hit Healthy MRR. What's Next?" data-zh="你达到了健康的MRR。What's Next?">You Hit Healthy MRR. What's Next?</div>
+          <div class="roadmap-desc" data-i18n="ep3_d" data-en="Expansion, operational scale, and sustaining momentum." data-zh="扩张、运营规模化与维持增长势头。">Expansion, operational scale, and sustaining momentum.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot future"></div>
+        <div class="roadmap-content">
+          <div class="roadmap-ep future" data-i18n="ep4_label" data-en="Episode 4" data-zh="第四期">Episode 4</div>
+          <div class="roadmap-title" data-i18n="ep4_t" data-en="AI Replaced Your Job. What's Next?" data-zh="AI取代了你的工作。What's Next?">AI Replaced Your Job. What's Next?</div>
+          <div class="roadmap-desc" data-i18n="ep4_d" data-en="Reinvention, new opportunity, and building with newfound freedom." data-zh="重塑自我、新机遇，以及在新获得的自由中构建。">Reinvention, new opportunity, and building with newfound freedom.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot future"></div>
+        <div class="roadmap-content">
+          <div class="roadmap-ep future" data-i18n="ep5_label" data-en="Episode 5" data-zh="第五期">Episode 5</div>
+          <div class="roadmap-title" data-i18n="ep5_t" data-en="AI as Companion. What's Next?" data-zh="AI作为伙伴。What's Next?">AI as Companion. What's Next?</div>
+          <div class="roadmap-desc" data-i18n="ep5_d" data-en="The frontier of human-AI collaboration and companionship." data-zh="人类与AI协作和伙伴关系的前沿。">The frontier of human-AI collaboration and companionship.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 8 — THE BIGGER VISION + PARTNERS ============ -->
+<section class="slide" id="s7">
+  <div class="page-num">08 / 11</div>
+  <div class="orb orb-1" style="top:auto;bottom:10%;right:10%;width:350px;height:350px"></div>
+  <div class="orb orb-3" style="top:10%;left:5%"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge" data-i18n="badge_vision" data-en="The Bigger Vision" data-zh="更大的愿景">The Bigger Vision</div>
+    </div>
+    <div class="vision-box fade-in d1">
+      <h2 data-i18n="h_vision" data-en="This series is the foundation<br>for The Collective." data-zh="这个系列是 The Collective<br>的基石。">This series is the foundation<br>for The Collective.</h2>
+      <div class="divider" style="margin:24px 0"></div>
+      <p style="font-size:18px;color:var(--muted);line-height:1.8;max-width:620px" data-i18n="vis_p1" data-en='"What&apos;s Next" isn&apos;t just an event. It&apos;s the entry point for something larger — an AI accelerator community that brings our companies and networks together to support the next wave of builders.' data-zh='"What&apos;s Next" 不仅仅是一场活动。它是通向更大事业的入口 — 一个AI加速器社区，将我们的公司和网络汇聚在一起，支持下一波构建者。'>"What's Next" isn't just an event. It's the entry point for something larger — an AI accelerator community that brings our companies and networks together to support the next wave of builders.</p>
+      <p style="font-size:16px;color:var(--text);line-height:1.7;max-width:620px;margin-top:20px;font-weight:500" data-i18n="vis_p2" data-en="Every monthly edition strengthens the network. Every builder who walks through the door becomes part of a growing ecosystem — one built on shared knowledge, real feedback, and collective momentum." data-zh="每一期月度活动都在强化这个网络。每一位走进来的构建者都将成为不断壮大的生态系统的一部分 — 一个建立在共享知识、真实反馈和集体动力之上的生态。">Every monthly edition strengthens the network. Every builder who walks through the door becomes part of a growing ecosystem — one built on shared knowledge, real feedback, and collective momentum.</p>
+      <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
+        <span class="card-tag" style="font-size:13px;padding:8px 18px;background:rgba(124,92,252,.12)" data-i18n="tag_comm" data-en="Community" data-zh="社区">Community</span>
+        <span class="card-tag" style="font-size:13px;padding:8px 18px;background:rgba(79,143,255,.12);color:var(--blue)" data-i18n="tag_accel" data-en="AI Accelerator" data-zh="AI加速器">AI Accelerator</span>
+        <span class="card-tag" style="font-size:13px;padding:8px 18px;background:rgba(168,85,247,.12);color:var(--purple)">The Collective</span>
+      </div>
+    </div>
+
+    <!-- PARTNER LOGOS -->
+    <div class="partner-grid fade-in d3" style="margin-top:36px">
+      <div class="partner-card">
+        <img src="./img/hashmeta.png" alt="Hashmeta" style="filter:brightness(0) invert(1)">
+        <div class="partner-name">Hashmeta</div>
+        <div class="partner-role" data-i18n="pr_hm" data-en="Speaker" data-zh="演讲者">Speaker</div>
+      </div>
+      <div class="partner-card">
+        <img src="./img/ai-apex.png" alt="AI APEX Asia">
+        <div class="partner-name">AI APEX Asia</div>
+        <div class="partner-role" data-i18n="pr_aa" data-en="Knowledge" data-zh="知识">Knowledge</div>
+      </div>
+      <div class="partner-card">
+        <img src="./img/first-prompt.png" alt="First Prompt" style="border-radius:6px">
+        <div class="partner-name">First Prompt</div>
+        <div class="partner-role" data-i18n="pr_fp" data-en="Community" data-zh="社区">Community</div>
+      </div>
+      <div class="partner-card">
+        <img src="./img/e27.png" alt="e27" style="filter:brightness(0) invert(1)">
+        <div class="partner-name">e27</div>
+        <div class="partner-role" data-i18n="pr_e27" data-en="Media" data-zh="媒体">Media</div>
+      </div>
+      <div class="partner-card">
+        <img src="./img/sginnovate.png" alt="SGInnovate">
+        <div class="partner-name">SGInnovate</div>
+        <div class="partner-role" data-i18n="pr_sgi" data-en="Ecosystem" data-zh="生态系统">Ecosystem</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 9 — HOW WE WORK TOGETHER ============ -->
+<section class="slide" id="s8">
+  <div class="page-num">09 / 11</div>
+  <div class="orb orb-2" style="bottom:auto;top:40%;right:-100px;width:350px;height:350px"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge" data-i18n="badge_collab" data-en="How We Work Together" data-zh="我们如何合作">How We Work Together</div>
+    </div>
+    <h2 class="fade-in d1" data-i18n="h_collab" data-en="Combined strengths.<br>Shared ownership." data-zh="强强联合。<br>共同拥有。">Combined strengths.<br>Shared ownership.</h2>
+    <div class="divider fade-in d2"></div>
+    <div class="split fade-in d3" style="margin-top:32px">
+      <div class="collab-card">
+        <div class="collab-header">
+          <div class="collab-avatar" style="background:rgba(124,92,252,.15);color:var(--accent)">C</div>
+          <div>
+            <div class="collab-name">ChronoAI</div>
+            <div class="collab-role" data-i18n="role_chrono" data-en="Creative &amp; Curation" data-zh="创意与策划">Creative &amp; Curation</div>
+          </div>
+        </div>
+        <ul class="collab-list">
+          <li data-i18n="c1" data-en="Concept &amp; theme for each episode" data-zh="每期的概念与主题">Concept &amp; theme for each episode</li>
+          <li data-i18n="c2" data-en="Design, creative direction &amp; branding" data-zh="设计、创意方向与品牌">Design, creative direction &amp; branding</li>
+          <li data-i18n="c3" data-en="Content publishing &amp; promotion" data-zh="内容发布与推广">Content publishing &amp; promotion</li>
+          <li data-i18n="c4" data-en="Personal invitations &amp; audience curation" data-zh="个人邀请与观众筛选">Personal invitations &amp; audience curation</li>
+          <li data-i18n="c5" data-en="Demo presentations &amp; workflow showcases" data-zh="演示展示与工作流程分享">Demo presentations &amp; workflow showcases</li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="collab-card">
+          <div class="collab-header">
+            <div class="collab-avatar" style="background:rgba(79,143,255,.15);color:var(--blue)">L</div>
+            <div>
+              <div class="collab-name" data-i18n="name_lf" data-en="LF &amp; Ann's Team" data-zh="LF 与 Ann 团队">LF &amp; Ann's Team</div>
+              <div class="collab-role" data-i18n="role_lf" data-en="Operations &amp; Network" data-zh="运营与网络">Operations &amp; Network</div>
+            </div>
+          </div>
+          <ul class="collab-list">
+            <li data-i18n="l1" data-en="Logistics, organisation &amp; on-site ops" data-zh="后勤、组织与现场运营">Logistics, organisation &amp; on-site ops</li>
+            <li data-i18n="l2" data-en="Venue decor &amp; atmosphere" data-zh="场地装饰与氛围营造">Venue decor &amp; atmosphere</li>
+            <li data-i18n="l3" data-en="Guest speaker sourcing via network" data-zh="通过人脉网络邀请嘉宾演讲者">Guest speaker sourcing via network</li>
+            <li data-i18n="l4" data-en="On-ground coordination &amp; execution" data-zh="现场协调与执行">On-ground coordination &amp; execution</li>
+          </ul>
+        </div>
+        <div class="collab-card" style="border-color:rgba(34,197,94,.12)">
+          <div class="collab-header">
+            <div class="collab-avatar" style="background:rgba(34,197,94,.12);color:var(--green)">⚡</div>
+            <div>
+              <div class="collab-name" data-i18n="name_shared" data-en="Shared" data-zh="共同">Shared</div>
+              <div class="collab-role" data-i18n="role_shared" data-en="Active coordination" data-zh="积极协调中">Active coordination</div>
+            </div>
+          </div>
+          <ul class="collab-list">
+            <li data-i18n="s1" data-en="WhatsApp project group — live &amp; active" data-zh="WhatsApp项目群 — 已激活并运行中">WhatsApp project group — live &amp; active</li>
+            <li data-i18n="s2" data-en="Joint quality control on guest list" data-zh="嘉宾名单的联合质量把控">Joint quality control on guest list</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 10 — TIMELINE ============ -->
+<section class="slide" id="s9">
+  <div class="page-num">10 / 11</div>
+  <div class="orb orb-1" style="top:20%;left:20%;width:400px;height:400px"></div>
+  <div class="slide-inner">
+    <div class="fade-in">
+      <div class="badge" data-i18n="badge_tl" data-en="Timeline" data-zh="时间线">Timeline</div>
+    </div>
+    <h2 class="fade-in d1" data-i18n="h_tl" data-en="We're moving fast." data-zh="我们正在快速推进。">We're moving fast.</h2>
+    <div class="divider fade-in d2"></div>
+    <div class="timeline-row fade-in d2">
+      <div class="tl-card">
+        <div class="tl-date" data-i18n="tl1_d" data-en="Mar 12" data-zh="3月12日">Mar 12</div>
+        <div class="tl-label" data-i18n="tl1_l" data-en="Description Finalised" data-zh="活动描述定稿">Description Finalised</div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-date" data-i18n="tl2_d" data-en="Mar 14" data-zh="3月14日">Mar 14</div>
+        <div class="tl-label" data-i18n="tl2_l" data-en="Event Goes Live" data-zh="活动上线">Event Goes Live</div>
+      </div>
+      <div class="tl-card highlight">
+        <div class="tl-date" data-i18n="tl3_d" data-en="Mar 27" data-zh="3月27日">Mar 27</div>
+        <div class="tl-label" data-i18n="tl3_l" data-en="Episode 1 — Event Day" data-zh="第一期 — 活动日">Episode 1 — Event Day</div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-date" data-i18n="tl4_d" data-en="5:30pm" data-zh="下午5:30">5:30pm</div>
+        <div class="tl-label" data-i18n="tl4_l" data-en="Doors Open" data-zh="开门迎宾">Doors Open</div>
+      </div>
+    </div>
+    <div class="fade-in d3" style="margin-top:32px;background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.4);flex-shrink:0"></div>
+      <span style="font-size:14px;color:var(--muted)" data-i18n="tl_status" data-en="Shared project group is active. Both teams are aligned and executing." data-zh="共享项目群已激活。双方团队已对齐并开始执行。">Shared project group is active. Both teams are aligned and executing.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 11 — CLOSE ============ -->
+<section class="slide" id="s10">
+  <div class="page-num">11 / 11</div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="slide-inner" style="text-align:center;display:flex;flex-direction:column;align-items:center">
+    <div class="fade-in">
+      <div class="badge" style="margin-bottom:32px">What's Next</div>
+    </div>
+    <h1 class="fade-in d1" style="font-size:clamp(36px,5vw,64px)" data-i18n="h_close" data-en="This is the beginning<br>of something bigger." data-zh="这是更大事业的<br>起点。">This is the beginning<br>of something bigger.</h1>
+    <p class="subtitle fade-in d2" style="text-align:center;max-width:520px;margin:0 auto" data-i18n="sub_close" data-en="Episode 1 is locked. The series is live. Together, we're building the community that the next generation of founders will call home." data-zh="第一期已锁定。系列活动已启动。我们将一起构建下一代创始人的社区家园。">Episode 1 is locked. The series is live. Together, we're building the community that the next generation of founders will call home.</p>
+    <div class="divider fade-in d3" style="margin:32px auto"></div>
+    <p class="fade-in d4" style="font-size:13px;color:var(--muted)" data-i18n="close_cta" data-en="Let's build what's next — together." data-zh="让我们一起构建 What's Next。">Let's build what's next — together.</p>
+  </div>
+</section>
+
+<script>
+let currentLang='en';
+
+function setLang(lang){
+  if(lang===currentLang)return;
+  currentLang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  document.documentElement.lang=lang==='zh'?'zh-CN':'en';
+  document.body.classList.add('i18n-fading');
+  setTimeout(()=>{
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);
+      if(val)el.innerHTML=val;
+    });
+    document.body.classList.remove('i18n-fading');
+  },200);
+}
+
+const slides=document.querySelectorAll('.slide');
+const dotsNav=document.getElementById('navDots');
+slides.forEach((_,i)=>{const d=document.createElement('button');d.className='nav-dot';d.addEventListener('click',()=>slides[i].scrollIntoView({behavior:'smooth'}));dotsNav.appendChild(d)});
+const dots=document.querySelectorAll('.nav-dot');
+const sObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const idx=[...slides].indexOf(e.target);dots.forEach((d,i)=>d.classList.toggle('active',i===idx))}})},{threshold:.45});
+slides.forEach(s=>sObs.observe(s));
+const fObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fObs.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.fade-in').forEach(el=>fObs.observe(el));
+document.addEventListener('keydown',e=>{const a=[...slides].findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=0&&r.top<innerHeight/2});if(e.key==='ArrowDown'&&a<slides.length-1)slides[a+1].scrollIntoView({behavior:'smooth'});if(e.key==='ArrowUp'&&a>0)slides[a-1].scrollIntoView({behavior:'smooth'})});
+
+document.querySelectorAll('.collab-list li').forEach(li=>{
+  const card=li.closest('.collab-card');
+  const avatar=card.querySelector('.collab-avatar');
+  const bg=getComputedStyle(avatar).backgroundColor;
+  const s=document.createElement('style');
+  const id='c'+Math.random().toString(36).slice(2,8);
+  li.classList.add(id);
+  s.textContent='.'+id+'::before{background:'+bg+' !important}';
+  document.head.appendChild(s);
+});
+</script>
+</body>
+</html>
